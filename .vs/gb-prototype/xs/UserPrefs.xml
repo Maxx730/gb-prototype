@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{04F40CED-9F4E-777E-3306-463C2045A1DD}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Prefabs/Bombs/Standard/Bomb.cs">
+    <Files>
+      <File FileName="Assets/Common/GameController.cs" Line="48" Column="67" />
+      <File FileName="Assets/Prefabs/Bombs/Standard/Bomb.cs" Line="7" Column="18" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="gb-prototype" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Common" expanded="True" />
+              <Node name="Prefabs" expanded="True">
+                <Node name="Bombs" expanded="True">
+                  <Node name="Standard" expanded="True">
+                    <Node name="Bomb.cs" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="6f006d6b-da3e-4399-83fe-6ec5d30fa4e9" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
