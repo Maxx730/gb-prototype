@@ -17,6 +17,6 @@ public class Bomb : MonoBehaviour
 
     private void ShrinkBomb()
     {
-        transform.localScale = new Vector3(transform.localScale.x - 0.005f, transform.localScale.y - 0.005f, 1f);
+        transform.localScale = new Vector3(transform.localScale.x - 0.0025f, transform.localScale.y - 0.0025f, 1f);
     }
 }
