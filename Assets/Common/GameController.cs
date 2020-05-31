@@ -12,13 +12,21 @@ public class GameController : MonoBehaviour
     [Header("Weapon Values")]
     public GameObject Weapon;
 
+    [Header("Tile Sections")]
+    public List<GameObject> Sections; 
+
     private GameObject cursor;
+    private List<GameObject> activeSections = new List<GameObject>();
 
     private void Start()
     {
         //Hide the system mouse cursor;
         Cursor.visible = false;
         cursor = Instantiate(cursors[0], new Vector3(0, 0, 0), Quaternion.identity);
+
+        //Spawn the first section at zero zero
+        GameObject initialSection = Instantiate(Sections[0], new Vector3(0, 0, 0), Quaternion.identity);
+        activeSections.Add(initialSection);
     }
 
     private void Update()
@@ -38,7 +46,7 @@ public class GameController : MonoBehaviour
 
         //When the users moves mouse OR touch, move the cursor exactly there.
         SetCursorPosition();
-
+        MoveSectionsDown();
     }
 
     private void SetCursorPosition()
@@ -62,5 +70,14 @@ public class GameController : MonoBehaviour
     {
         Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Instantiate(Weapon, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
+    }
+
+    private void MoveSectionsDown()
+    {
+        foreach(GameObject section in activeSections)
+        {
+            Vector3 pos = section.transform.position;
+            section.transform.position = new Vector3(pos.x, pos.y - (Time.deltaTime * 0.05f), pos.z);
+        }
     }
 }
