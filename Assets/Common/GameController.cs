@@ -13,10 +13,12 @@ public class GameController : MonoBehaviour
     public GameObject Weapon;
 
     [Header("Tile Sections")]
-    public List<GameObject> Sections; 
+    public List<GameObject> Sections;
+    public float SectionSpeed = 0.05f;
 
     private GameObject cursor;
     private List<GameObject> activeSections = new List<GameObject>();
+    private Vector2 screenBounds;
 
     private void Start()
     {
@@ -24,9 +26,16 @@ public class GameController : MonoBehaviour
         Cursor.visible = false;
         cursor = Instantiate(cursors[0], new Vector3(0, 0, 0), Quaternion.identity);
 
+        //Get Screen bounds
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+
         //Spawn the first section at zero zero
         GameObject initialSection = Instantiate(Sections[0], new Vector3(0, 0, 0), Quaternion.identity);
         activeSections.Add(initialSection);
+
+        //Spawn the second section behind.
+        GameObject secondSection = Instantiate(Sections[0], new Vector3(0, (initialSection.GetComponent<Collider2D>().bounds.size.y), 0), Quaternion.identity);
+        activeSections.Add(secondSection);
     }
 
     private void Update()
@@ -47,6 +56,7 @@ public class GameController : MonoBehaviour
         //When the users moves mouse OR touch, move the cursor exactly there.
         SetCursorPosition();
         MoveSectionsDown();
+        DestroySections();
     }
 
     private void SetCursorPosition()
@@ -77,7 +87,21 @@ public class GameController : MonoBehaviour
         foreach(GameObject section in activeSections)
         {
             Vector3 pos = section.transform.position;
-            section.transform.position = new Vector3(pos.x, pos.y - (Time.deltaTime * 0.05f), pos.z);
+            section.transform.position = new Vector3(pos.x, pos.y - (Time.deltaTime * SectionSpeed), pos.z);
+        }
+    }
+
+    private void DestroySections()
+    {
+        foreach(GameObject section in activeSections)
+        {
+            if (section.transform.position.y < -section.GetComponent<Collider2D>().bounds.size.y)
+            {
+                Destroy(section);
+                //Next we want to actually remove the section from the list so that 
+                //the list does not try to render something that no longer exists
+
+            }
         }
     }
 }
