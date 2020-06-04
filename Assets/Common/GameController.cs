@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,9 @@ public class GameController : MonoBehaviour
     [Header("Input Values")]
     public List<GameObject> cursors;
     public float CursorScaleSpeed = 1;
+    public float ShakeAmount = 30;
+    public float ShakeTimeout = 0.5f;
+    public float PanAmount = 1;
 
     [Header("Weapon Values")]
     public GameObject Weapon;
@@ -19,6 +23,8 @@ public class GameController : MonoBehaviour
     private GameObject cursor;
     private List<GameObject> activeSections = new List<GameObject>();
     private Vector2 screenBounds;
+    private float lastShake;
+    private int CurrentWave = 1;
 
     private void Start()
     {
@@ -48,7 +54,7 @@ public class GameController : MonoBehaviour
         }
 
         //Check if the cursor has been scaled down or not.
-        if (cursor.transform.localScale.x < 1)
+        if (cursor.transform.localScale.x < 2)
         {
             ScaleCursorUp();
         }
@@ -57,6 +63,14 @@ public class GameController : MonoBehaviour
         SetCursorPosition();
         MoveSectionsDown();
         DestroySections();
+
+        if(Time.time - lastShake < ShakeTimeout && lastShake != 0)
+        {
+            ShakeCamera();
+        } else
+        {
+            PanCamera();
+        }
     }
 
     private void SetCursorPosition()
@@ -97,11 +111,26 @@ public class GameController : MonoBehaviour
         {
             if (section.transform.position.y < -section.GetComponent<Collider2D>().bounds.size.y)
             {
+                GameObject addedSection = Instantiate(Sections[0], new Vector3(0, section.GetComponent<Collider2D>().bounds.size.y, 0), Quaternion.identity);
+                activeSections.Add(addedSection);
+                activeSections.Remove(section);
                 Destroy(section);
-                //Next we want to actually remove the section from the list so that 
-                //the list does not try to render something that no longer exists
-
             }
         }
+    }
+
+    private void PanCamera()
+    {
+        transform.position = new Vector3(Mathf.Sin(Time.time * PanAmount), transform.position.y, transform.position.z);
+    }
+
+    private void ShakeCamera()
+    {
+        transform.position = new Vector3(Mathf.Sin(Time.time * ShakeAmount) * 0.25f, transform.position.y, transform.position.z);
+    }
+
+    public void SetShaking(float last)
+    {
+        lastShake = last;
     }
 }

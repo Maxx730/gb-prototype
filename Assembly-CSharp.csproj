@@ -67,6 +67,8 @@
     <Compile Include="Assets\Prefabs\Bombs\Standard\Bomb.cs" />
     <Compile Include="Assets\Prefabs\Clouds\Cloud.cs" />
     <Compile Include="Assets\Prefabs\Clouds\CloudSpawner.cs" />
+    <Compile Include="Assets\Prefabs\Explosions\Explosion.cs" />
+    <Compile Include="Assets\Prefabs\Target\Target.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

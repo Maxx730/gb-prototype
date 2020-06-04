@@ -50,6 +50,42 @@ TextureImporter:
   - first:
       213: -5141731813512192414
     second: sand-tiles_15
+  - first:
+      213: 875125670799987936
+    second: sand-tiles_16
+  - first:
+      213: -5824105453592800454
+    second: sand-tiles_17
+  - first:
+      213: 6590961471780667270
+    second: sand-tiles_18
+  - first:
+      213: -2465303971558926844
+    second: sand-tiles_19
+  - first:
+      213: -1729648679786548637
+    second: sand-tiles_20
+  - first:
+      213: -9112494956903609310
+    second: sand-tiles_21
+  - first:
+      213: -8724292203330737202
+    second: sand-tiles_22
+  - first:
+      213: 7173970440369435682
+    second: sand-tiles_23
+  - first:
+      213: 1429755630654452905
+    second: sand-tiles_24
+  - first:
+      213: -5313319402510897861
+    second: sand-tiles_25
+  - first:
+      213: -3464834267105585489
+    second: sand-tiles_26
+  - first:
+      213: 8274566253125919760
+    second: sand-tiles_27
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -151,7 +187,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -172,7 +208,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 96
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -193,7 +229,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 96
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -213,8 +249,8 @@ TextureImporter:
       name: sand-tiles_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
+        x: 128
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -234,8 +270,8 @@ TextureImporter:
       name: sand-tiles_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 160
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -255,8 +291,8 @@ TextureImporter:
       name: sand-tiles_5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
+        x: 0
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -276,8 +312,8 @@ TextureImporter:
       name: sand-tiles_6
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 32
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -297,8 +333,8 @@ TextureImporter:
       name: sand-tiles_7
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
+        x: 64
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -318,8 +354,8 @@ TextureImporter:
       name: sand-tiles_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 96
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -339,8 +375,8 @@ TextureImporter:
       name: sand-tiles_9
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 128
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -360,8 +396,8 @@ TextureImporter:
       name: sand-tiles_10
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
+        x: 160
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -381,8 +417,8 @@ TextureImporter:
       name: sand-tiles_11
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 0
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -402,8 +438,8 @@ TextureImporter:
       name: sand-tiles_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 32
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -423,8 +459,8 @@ TextureImporter:
       name: sand-tiles_13
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -444,8 +480,8 @@ TextureImporter:
       name: sand-tiles_14
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 96
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -465,8 +501,8 @@ TextureImporter:
       name: sand-tiles_15
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 128
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -478,6 +514,258 @@ TextureImporter:
       bones: []
       spriteID: 26ed74d5826e4a8b0800000000000000
       internalID: -5141731813512192414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand-tiles_16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e4dbd53922152c00800000000000000
+      internalID: 875125670799987936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand-tiles_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a339f2882fe9c2fa0800000000000000
+      internalID: -5824105453592800454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand-tiles_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68fb5c5c98cc77b50800000000000000
+      internalID: 6590961471780667270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand-tiles_19
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 406dedf791b79cdd0800000000000000
+      internalID: -2465303971558926844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand-tiles_20
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 362791790bd0ff7e0800000000000000
+      internalID: -1729648679786548637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand-tiles_21
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22cc834ed1ae98180800000000000000
+      internalID: -9112494956903609310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand-tiles_22
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecbe2cfd6761de680800000000000000
+      internalID: -8724292203330737202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand-tiles_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2247f5f2b101f8360800000000000000
+      internalID: 7173970440369435682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand-tiles_24
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a4f5c0cb2387d310800000000000000
+      internalID: 1429755630654452905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand-tiles_25
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3da523972c4346b0800000000000000
+      internalID: -5313319402510897861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand-tiles_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa6129f679f6aefc0800000000000000
+      internalID: -3464834267105585489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand-tiles_27
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 014610caa2a25d270800000000000000
+      internalID: 8274566253125919760
       vertices: []
       indices: 
       edges: []
