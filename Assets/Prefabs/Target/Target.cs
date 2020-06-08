@@ -18,7 +18,8 @@ public class Target : MonoBehaviour
             damageEventTime = Time.time;
         } else
         {
-            Destroy(transform.gameObject);
+            Debug.Log("TARGET DESTROYED");
+            GetComponent<Animator>().SetBool("isDestroyed", true);
         }
     }
     private void Update()

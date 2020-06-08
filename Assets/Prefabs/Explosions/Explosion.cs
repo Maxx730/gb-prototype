@@ -6,6 +6,7 @@ public class Explosion : MonoBehaviour
 {
     [Header("General")]
     public float panSpeed;
+    public int craterDisplay = 0;
 
     private float blastRad = 1;
     private int blastDamage;
@@ -55,7 +56,12 @@ public class Explosion : MonoBehaviour
 
     private IEnumerator DisplayCrater()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(craterDisplay);
         transform.GetChild(1).gameObject.SetActive(true);
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(transform.gameObject);
     }
 }

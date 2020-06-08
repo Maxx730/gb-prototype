@@ -15,7 +15,7 @@ public class Bomb : MonoBehaviour
 
     private void Start()
     {
-        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        gameController = GameObject.Find("MainController").GetComponent<GameController>();
     }
 
     private void Update()

@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: -589202251
   m_SortingLayer: 1
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 9ee2ab1e481a34fc792980e3b32a6da0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba070385929acb2488eb839facdc99d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,5 +97,6 @@ MonoBehaviour:
   fallTransition: 1
   shrinkFactor: 0.015
   impactRadius: 2
+  Damage: 15
   explosionPrefab: {fileID: 8744474690971905231, guid: 53dc627fdeacf6f44b04f61879a92309,
     type: 3}
