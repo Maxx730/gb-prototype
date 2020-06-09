@@ -10,15 +10,8 @@ public class Explosion : MonoBehaviour
 
     private float blastRad = 1;
     private int blastDamage;
-    public void SetBlastRadius(float radius)
-    {
-        blastRad = radius;
-    }
-
-    public void SetBlastDamage(int damage)
-    {
-        blastDamage = damage;
-    }
+    public void SetBlastRadius(float radius) => blastRad = radius;
+    public void SetBlastDamage(int damage) => blastDamage = damage;
 
     private void OnDrawGizmos()
     {
@@ -29,7 +22,7 @@ public class Explosion : MonoBehaviour
     private void Start()
     {
         ParticleSystem particles = transform.GetChild(0).GetComponent<ParticleSystem>();
-        float dur = particles.duration;
+        float dur = particles.main.duration;
         Destroy(particles, dur);
         FindTargets();
         StartCoroutine(DisplayCrater());
@@ -60,8 +53,5 @@ public class Explosion : MonoBehaviour
         transform.GetChild(1).gameObject.SetActive(true);
     }
 
-    private void OnBecameInvisible()
-    {
-        Destroy(transform.gameObject);
-    }
+    private void OnBecameInvisible() => Destroy(transform.gameObject);
 }

@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour
         }
 
         //Check if the cursor has been scaled down or not.
-        if (cursor.transform.localScale.x < 2)
+        if (cursor.transform.localScale.x < 2 && !Input.GetMouseButton(0))
         {
             ScaleCursorUp();
         }
@@ -111,7 +111,7 @@ public class GameController : MonoBehaviour
     //Scale the Redicle size down and back up to communicate to the user that something is happening
     private void ScaleCursorDown()
     {
-        cursor.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+        cursor.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     private void ScaleCursorUp()
@@ -193,7 +193,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private bool IsBombingMode()
+    public bool IsBombingMode()
     {
         if (transform.GetChild(0).gameObject.GetComponent<Camera>().enabled == false)
         {
