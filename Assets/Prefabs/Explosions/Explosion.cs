@@ -28,10 +28,7 @@ public class Explosion : MonoBehaviour
         StartCoroutine(DisplayCrater());
     }
 
-    private void Update()
-    {
-        transform.position = new Vector3(transform.position.x, transform.position.y - (Time.deltaTime * panSpeed), transform.position.z);
-    }
+    private void Update() => transform.position = new Vector3(transform.position.x, transform.position.y - (Time.deltaTime * panSpeed), transform.position.z);
 
     private void FindTargets()
     {
@@ -41,8 +38,11 @@ public class Explosion : MonoBehaviour
         {
             if(obj.gameObject.tag == "Target")
             {
-                obj.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-                obj.gameObject.GetComponent<Target>().DamageTarget(blastDamage);
+                if(!obj.gameObject.GetComponent<Target>().IsDead()) {
+                    obj.gameObject.GetComponent<Target>().DamageTarget(blastDamage);
+                } else {
+                    obj.gameObject.GetComponent<Target>().AnimateDestruction();
+                }
             }
         }
     }

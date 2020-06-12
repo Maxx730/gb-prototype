@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Section
   - Target
+  - Bullet
   layers:
   - Default
   - TransparentFX

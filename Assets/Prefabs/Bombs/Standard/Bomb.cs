@@ -8,7 +8,7 @@ public class Bomb : MonoBehaviour
     public float fallTransition = 0.5f;
     public float shrinkFactor = 0.0015f;
     public float impactRadius = 1;
-    public int Damage = 15;
+    public int Damage;
     public GameObject explosionPrefab;
 
     private GameController gameController;

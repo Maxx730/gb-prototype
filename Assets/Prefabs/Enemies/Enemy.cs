@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {   
     [Header("General")]
+    public int EnemyHealth = 100;
     public int EnemySpeed;
     public float PanAmount;
 
@@ -13,7 +14,17 @@ public class Enemy : MonoBehaviour
 
     private Camera skyCam;
     private Vector2 ScreenBounds;
+    private float lastDamage;
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        
+        if(other.gameObject.tag == "Bullet") {
+            Destroy(other.gameObject);
+            EnemyHealth -= 1;
+            lastDamage = Time.time;
+        }
+    }
     void Start()
     {
         skyCam = GameObject.Find("SkyCamera").GetComponent<Camera>();
@@ -36,6 +47,19 @@ public class Enemy : MonoBehaviour
         if(transform.position.y < -ScreenBounds.y) {
             transform.rotation = Quaternion.Euler(0,0,0);
             movingUp = true;
+        }
+
+        FlashDamage();
+        if(EnemyHealth < 0) {
+            Destroy(transform.gameObject);
+        }
+    }
+
+    void FlashDamage() {
+        if(Time.time - lastDamage > 0.05) {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        } else {
+            GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
 

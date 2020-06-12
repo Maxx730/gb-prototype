@@ -10,15 +10,36 @@ public class Target : MonoBehaviour
 
     private float damageTimeout = 0.25f;
     private float damageEventTime;
+    private bool HasDied = false;
+    private SpriteRenderer renderer;
+
+    void Start()
+    {
+        renderer = GetComponent<SpriteRenderer>();
+    }
     public void DamageTarget(int value)
     {
-        if(HitPoints - value > 0)
-        {
-            HitPoints -= value;
-            damageEventTime = Time.time;
-        } else
-        {
-            Debug.Log("TARGET DESTROYED");
+        renderer.color = Color.red;
+        HitPoints -= value;
+        damageEventTime = Time.time;
+
+        if(HitPoints == 0) {
+            AnimateDestruction();
+        }
+    }
+
+    public bool IsDead() {
+        if(HitPoints >= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public void AnimateDestruction() {
+        if(!HasDied) {
+            HasDied = true;
+            GameController.AddTargetDestroyed();
             GetComponent<Animator>().SetBool("isDestroyed", true);
         }
     }
@@ -26,7 +47,9 @@ public class Target : MonoBehaviour
     {
         if (Time.time - damageEventTime > damageTimeout) 
         {
-            GetComponent<SpriteRenderer>().color = Color.white;
+            renderer.color = Color.white;
         }
     }
+
+    private void OnBecameInvisible() => Destroy(transform.gameObject);
 }

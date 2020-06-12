@@ -97,6 +97,6 @@ MonoBehaviour:
   fallTransition: 1
   shrinkFactor: 0.5
   impactRadius: 2
-  Damage: 20
+  Damage: 35
   explosionPrefab: {fileID: 8744474690971905231, guid: 53dc627fdeacf6f44b04f61879a92309,
     type: 3}

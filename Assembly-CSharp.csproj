@@ -49,6 +49,7 @@
      <Compile Include="Assets\Prefabs\Explosions\Explosion.cs" />
      <Compile Include="Assets\Prefabs\Hardpoints\Hardpoint.cs" />
      <Compile Include="Assets\Prefabs\Target\Target.cs" />
+     <Compile Include="Assets\Prefabs\Waves\OceanWave.cs" />
      <Compile Include="Assets\RockVR\Common\Scripts\EventDelegate.cs" />
      <Compile Include="Assets\RockVR\Common\Scripts\FPSDisplay.cs" />
      <Compile Include="Assets\RockVR\Common\Scripts\Platform.cs" />

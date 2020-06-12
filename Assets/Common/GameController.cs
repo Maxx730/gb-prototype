@@ -23,12 +23,22 @@ public class GameController : MonoBehaviour
 
     [Header("Tile Sections")]
     public List<GameObject> Sections;
+    public List<GameObject> GrassSections;
+    public List<GameObject> SandSections;
+    public List<GameObject> WaterSections;
     public float SectionSpeed = 0.05f;
 
     [Header("UI Elements")]
     public Slider progressIndicator;
     public Button switchCameras;
+    public GameObject WaveMenuCanvas;
 
+    [Header("Wave Interval Sections")]
+    public GameObject Beginning;
+    public GameObject Middle;
+    public GameObject End;
+
+    private static bool WaveMenu = false;
     private GameObject cursor;
     private List<GameObject> activeSections = new List<GameObject>();
     private Vector2 screenBounds;
@@ -38,8 +48,13 @@ public class GameController : MonoBehaviour
     private float levelDistance;
     private float lastShot;
 
+    //Score keeping variables.
+    private static int TargetsDestroyed = 0, FightersDestroyed = 0;
+    private static Text TargetsWaveFinal, FightersWaveFinal;
+
     private void Start()
     {
+
         //Hide the system mouse cursor;
         Cursor.visible = false;
         cursor = Instantiate(cursors[0], new Vector3(0, 0, 0), Quaternion.identity);
@@ -48,11 +63,11 @@ public class GameController : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 
         //Spawn the first section at zero zero
-        GameObject initialSection = Instantiate(Sections[0], new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject initialSection = Instantiate(End, new Vector3(0, 0, 0), Quaternion.identity);
         activeSections.Add(initialSection);
 
         //Spawn the second section behind.
-        GameObject secondSection = Instantiate(Sections[0], new Vector3(0, (initialSection.GetComponent<Collider2D>().bounds.size.y), 0), Quaternion.identity);
+        GameObject secondSection = Instantiate(Sections[1], new Vector3(0, (initialSection.GetComponent<Collider2D>().bounds.size.y), 0), Quaternion.identity);
         activeSections.Add(secondSection);
 
         levelDistance = initialSection.GetComponent<Collider2D>().bounds.size.y * (CurrentWave * waveAmount);
@@ -83,22 +98,14 @@ public class GameController : MonoBehaviour
             ScaleCursorUp();
         }
 
-        //When the users moves mouse OR touch, move the cursor exactly there.
-        if(waveAmount > 0)
-        {
-            SetCursorPosition();
-            MoveSectionsDown();
-            DestroySections();
-            SetProgressIndicator();
+        if(WaveMenu) {
+            
         }
 
-/*        if(Time.time - lastShake < ShakeTimeout && lastShake != 0)
-        {
-            ShakeCamera();
-        } else
-        {
-            PanCamera();
-        }*/
+        //When the users moves mouse OR touch, move the cursor exactly there.
+        SetCursorPosition();
+        MoveSectionsDown();
+        SetProgressIndicator();
     }
 
     private void SetCursorPosition()
@@ -129,47 +136,62 @@ public class GameController : MonoBehaviour
     {
         foreach(GameObject section in activeSections)
         {
-            Vector3 pos = section.transform.position;
-            section.transform.position = new Vector3(pos.x, pos.y - (Time.deltaTime * SectionSpeed), pos.z);
+            if(CheckSectionPosition(section)){
+                Vector3 pos = section.transform.position;
+                section.transform.position = new Vector3(pos.x, pos.y - (Time.deltaTime * SectionSpeed), pos.z);
+            } else {
+                //Destroy the section if it is not passing positoin check;
+                DestroySection(section);
+            }
+
+            if(section.gameObject.name == "EndlessBeginning(Clone)" && section.gameObject.transform.position.y < 0) {
+                WaveMenuCanvas.SetActive(true);
+                UpdateFinalsCounters();
+            }
         }
 
         levelProgress += Time.deltaTime * SectionSpeed;
     }
 
-    private void DestroySections()
+    private bool CheckSectionPosition(GameObject section) {
+        if(section.transform.position.y < -(section.GetComponent<Collider2D>().bounds.size.y)) {
+            return false;
+        }
+        return true;
+    }
+
+    private void DestroySection(GameObject section)
     {
-        foreach(GameObject section in activeSections)
-        {
-            if (section.transform.position.y < -section.GetComponent<Collider2D>().bounds.size.y)
-            {
-                GameObject addedSection = Instantiate(Sections[0], new Vector3(0, section.GetComponent<Collider2D>().bounds.size.y, 0), Quaternion.identity);
-                activeSections.Add(addedSection);
-                activeSections.Remove(section);
-                waveAmount--;
-                Destroy(section);
+        if(waveAmount > 0) {
+            activeSections.Add(Instantiate(Sections[0], new Vector3(0, section.GetComponent<Collider2D>().bounds.size.y, 0), Quaternion.identity));
+            waveAmount--;
+        } else {
+            //IF we have hit the end of the wave amount, then we want to start making the endless background for the 
+            //menu.
+            if(!WaveMenu) {
+                activeSections.Add(Instantiate(Beginning, new Vector3(0, section.GetComponent<Collider2D>().bounds.size.y, 0), Quaternion.identity));  
+                WaveMenu = true;     
+            } else {
+                activeSections.Add(Instantiate(Middle, new Vector3(0, section.GetComponent<Collider2D>().bounds.size.y, 0), Quaternion.identity));
             }
         }
+
+        activeSections.Remove(section);
+        Destroy(section);
     }
 
-    private void PanCamera()
-    {
-        transform.position = new Vector3(Mathf.Sin(Time.time * PanAmount), transform.position.y, transform.position.z);
+    private void AddSection(GameObject section){
+        GameObject addedSection = Instantiate(section, new Vector3(0, section.GetComponent<Collider2D>().bounds.size.y, 0), Quaternion.identity);
+        activeSections.Add(addedSection);
     }
 
-    private void ShakeCamera()
-    {
-        transform.position = new Vector3(Mathf.Sin(Time.time * ShakeAmount) * 0.25f, transform.position.y, transform.position.z);
-    }
+    private void PanCamera() => transform.position = new Vector3(Mathf.Sin(Time.time * PanAmount), transform.position.y, transform.position.z);
 
-    private void SetProgressIndicator()
-    {
-        progressIndicator.value = (levelProgress / levelDistance) * 100;
-    }
+    private void ShakeCamera() => transform.position = new Vector3(Mathf.Sin(Time.time * ShakeAmount) * 0.25f, transform.position.y, transform.position.z);
 
-    public void SetShaking(float last)
-    {
-        lastShake = last;
-    }
+    private void SetProgressIndicator() => progressIndicator.value = (levelProgress / levelDistance) * 100;
+
+    public void SetShaking(float last) => lastShake = last;
 
     public void SwitchCameras()
     {
@@ -195,7 +217,7 @@ public class GameController : MonoBehaviour
 
     public bool IsBombingMode()
     {
-        if (transform.GetChild(0).gameObject.GetComponent<Camera>().enabled == false)
+        if (transform.GetChild(0).gameObject.GetComponent<Camera>().enabled == false || WaveMenuCanvas.active)
         {
             return false;
         }
@@ -203,5 +225,15 @@ public class GameController : MonoBehaviour
         {
             return true;
         }
+    }
+
+    public static void AddTargetDestroyed() => TargetsDestroyed++;
+    public static void AddFighterDestroyed() => FightersDestroyed++;
+    public static void UpdateFinalsCounters() {
+        //Get UI Elements
+        TargetsWaveFinal = GameObject.Find("TargetsFinal").GetComponent<Text>();
+        FightersWaveFinal = GameObject.Find("FightersFinal").GetComponent<Text>();
+        TargetsWaveFinal.text = TargetsDestroyed + " Targets Destroyed";
+        FightersWaveFinal.text = FightersDestroyed + " Fighters Destroyed";
     }
 }

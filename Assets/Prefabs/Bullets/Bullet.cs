@@ -16,8 +16,5 @@ public class Bullet : MonoBehaviour
         transform.position += transform.up * Time.deltaTime * bulletSpeed;
     }
 
-    void OnBecameInvisible()
-    {
-        Destroy(transform.gameObject);
-    }
+    void OnBecameInvisible() => Destroy(transform.gameObject);
 }
